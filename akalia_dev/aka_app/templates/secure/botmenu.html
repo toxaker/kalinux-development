@@ -6,6 +6,183 @@
   <meta name="description" content="KaliDev Security Bot - Automate your security tasks">
   <title>KaliDev Security Bot</title>
   <link rel="stylesheet" href="css/botmenu.css">
+  <style>
+    /* Общие стили */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #f4f4f9;
+    }
+
+    h1, h2, h3 {
+      color: #007BFF;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    .header {
+      background: #222;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header .logo h1 {
+      margin: 0;
+    }
+
+    .nav-toggle {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .nav-links li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Content */
+    main {
+      padding: 20px;
+    }
+
+    .about-section, .features-section, .terminal-section {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: #f4f4f9;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+    }
+
+    /* Terminal */
+    .terminal {
+      background: #000;
+      color: #0f0;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: monospace;
+      position: relative;
+    }
+
+    #terminal-output {
+      max-height: 200px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+
+    #terminal-input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #222;
+      color: white;
+      font-family: monospace;
+      border-radius: 4px;
+    }
+
+    #terminal-input:focus {
+      outline: 2px solid #007BFF;
+    }
+
+    .typing-effect {
+      animation: typing 2s steps(30, end), blink 0.5s step-end infinite alternate;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      border-right: 2px solid;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      background: #222;
+      color: white;
+      padding: 10px 0;
+      margin-top: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -20,7 +197,7 @@
       <li><a href="#terminal">Terminal</a></li>
     </ul>
   </header>
-  
+
   <!-- Main Content -->
   <main>
     <!-- About Section -->
@@ -78,7 +255,70 @@
   <footer class="footer">
     <p>© 2024 KaliDev. All rights reserved.</p>
   </footer>
-  
+
+  <script>
+    // Mobile navigation toggle
+    document.getElementById('nav-toggle').addEventListener('click', () => {
+      document.getElementById('nav-links').classList.toggle('show');
+    });
+
+    // Terminal interaction
+    const terminalInput = document.getElementById('terminal-input');
+    const terminalOutput = document.getElementById('terminal-output');
+
+    terminalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const command = terminalInput.value.trim();
+        const output = document.createElement('p');
+        output.textContent = `$ ${command}`;
+        terminalOutput.appendChild(output);
+
+        const response = document.createElement('p');
+        response.textContent = command === 'help' ? 'Available commands: help, about, exit' : `Command "${command}" not found.`;
+        terminalOutput.appendChild(response);
+
+        terminalInput.value = '';
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      }
+    });
+  </script>
   <script src="botmenu.js"></script>
 </body>
+ <div class="bottom-menu">
+    <a href="#" class="bottom-menu-item" id="menu-button">
+    <img src="/static/images/5.png" alt="Menu Icon">
+  </a>
+ </div>
+<div class="popup-overlay" id="popup-overlay">
+  <div class="popup-menu" id="popup-menu">
+    <button id="close-button" class="close-button">Закрыть</button> 
+    <ul>
+       <li><a href="/secure/dashpanelda.html">Управление сервером</a></li>
+       <li><a href="/">Выйти...</a></li>
+       <li><a href="/tutorial">Помощь</a></li>
+    </ul>
+<script>
+const menuButton = document.getElementById('menu-button');
+const menuOverlay = document.getElementById('popup-overlay');
+const closeButton = document.getElementById('close-button');
+
+// Open the menu
+menuButton.addEventListener('click', () => {
+  menuOverlay.classList.add('active'); // Show the popup
+});
+
+// Close the menu when clicking the "Close" button
+closeButton.addEventListener('click', () => {
+  menuOverlay.classList.remove('active'); // Hide the popup
+});
+
+// Close the menu when clicking outside the popup
+menuOverlay.addEventListener('click', (e) => {
+  if (e.target === menuOverlay) {
+    menuOverlay.classList.remove('active'); // Hide the popup
+  }
+});
+</script>
+   </div>
+ </div>
 </html>

@@ -1,3 +1,4 @@
+/* Основной фон и анимация */
 body {
     background: linear-gradient(120deg, #000103, #131339, #00001a);
     background-size: 300% 300%;
@@ -32,7 +33,7 @@ body {
      position: fixed;
      width: 100%;                                                                                
      bottom: 0;                                                                                  
-     opacity: 0.7;                                                                              
+     opacity: 0.85;                                                                              
      transition: opacity 0.5s ease;                                                              
      z-index: 1000;                                                                              
  }                                                                                               
@@ -41,15 +42,20 @@ body {
      display: flex;                                                                              
      flex-direction: column;                                                                     
      align-items: center;                                                                        
+     background-color: #002141;                                                                      
      text-decoration: none;                                                                      
+     color: #131339;                                                                             
+     padding-right: 10px;                                                                        
+     width: 80px;                                                                                
  }                                                                                               
                                                                                                  
  footer .menu-item img {                                                                         
      width: 90px;                                                                                
      height: 80px;                                                                               
      margin-bottom: 0px;                                                                         
-     border-radius: 1px;
-     opacity: 100;
+     border: 1px solid #00ffff;                                                                  
+     border-radius: 11px;                                                                        
+     box-shadow: 0 10px 17px rgba(0, 0, 0, 0.5);                                                 
                                                                                                  
 }                                                                                                 
 
@@ -58,9 +64,9 @@ footer .menu-item span {
 }                                                                                               
                                                                                                  
 footer .menu-item:hover {                                                                       
-     background-color: #0c0c25;                                                                  
+     background-color: #180032;                                                                  
      border-radius: 10px;                                                                        
-     transition: background-color 1s ease;                                                    
+     transition: background-color 0.8s ease;                                                    
 }                                                                                               
                                                                                                  
  /* Футер в конце страницы */                                                                    
@@ -220,10 +226,32 @@ button {
                                                                                                         
 button:hover {                                                                                          
     background-color: #131339;                                                                          
-    transform: translateY(5px);                                                                        
+    transform: translateY(-5px);                                                                        
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);                                                         
 }                                                                                                       
-
+                                                                                                        
+/* Footer footer {                                                                                      
+    color: #e0e0e0;                                                                                     
+    text-align: center;                                                                                 
+    padding: 10px;                                                                                      
+    position: fixed;                                                                                    
+    bottom: 0;                                                                                          
+    width: 100%;                                                                                        
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);                                                          
+}*/                                                                                                     
+                                                                                                        
+/*footer .menu-item img {                                                                               
+    width: 15px;                                                                                        
+    height: 7px;                                                                                        
+    margin-bottom: 5px;                                                                                 
+}                                                                                                       
+                                                                                                        
+footer .menu-item span {                                                                                
+    display: block;                                                                                     
+    font-size: 12px;                                                                                    
+}                                                                                                       
+                                                                                                        
+/* Основные стили */                                                                                    
 body {                                                                                                  
     font-family: Arial, sans-serif;                                                                     
     margin: 0;                                                                                          
@@ -262,6 +290,20 @@ p {
     margin-bottom: 30px;                                                                                
 }                                                                                                       
                                                                                                         
+/* Основное меню */                                                                                     
+.main-menu .button {                                                                                    
+    display: inline-block;                                                                              
+    padding: 15px 25px;                                                                                 
+    margin: 10px;                                                                                       
+    background-color: #00a8cc;                                                                          
+    color: white;                                                                                       
+    text-decoration: none;                                                                              
+    font-size: 16px;                                                                                    
+    border-radius: 5px;                                                                                 
+    transition: background-color 0.3s ease;                                                             
+}                                                                                                       
+                                                                                                        
+/* Футер */                                                                                             
 footer {                                                                                                
     position: relative; /* Убрали фиксацию, чтобы двигался с контентом */                               
     background-color: #142850;                                                                          
@@ -277,6 +319,15 @@ footer {
     padding: 10px;                                                                                      
 }                                                                                                       
                                                                                                         
+.footer-button {                                                                                        
+    color: white;                                                                                       
+    text-decoration: none;                                                                              
+    font-size: 14px;                                                                                    
+    padding: 10px;                                                                                      
+    background-color: #00a8cc;                                                                          
+    border-radius: 5px;                                                                                 
+    transition: background-color 0.3s ease;                                                             
+}                                                                                                       
                                                                                                         
 .footer-button:hover {                                                                                  
     background-color: #007a99;                                                                          
@@ -316,8 +367,8 @@ footer {
 .bottom-menu {                                                                                          
     display: flex;                                                                                      
     justify-content: space-around;                                                                      
-    width: 100%;                               
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);                                                          
+    width 100%;                                                                                         
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);                                                          
                                                                                                         
 }                                                                                                       
                                                                                                         
@@ -392,7 +443,7 @@ nav ul.menu li a {
     }                                                                                                   
                                                                                                         
     button {                                                                                            
-        max-width: 25%;
+        width: 100%;                                                                                    
         font-size: 0.9em;                                                                               
         padding: 10px 20px;                                                                             
     }                                                                                                   
@@ -439,10 +490,7 @@ nav ul.menu li a {
         width: 100%;                                                                                    
         font-size: 0.9em;                                                                               
         padding: 10px 20px;                                                                             
-    }
-    body {
-        min-width: 462px;
-        width: 99%;
+    }                                                                                                   
 }                                                                                                       
                                                                                                         
 /* Рамка для заголовка */                                                                               
@@ -531,8 +579,8 @@ section p {
     border-radius: 8px;
     transition: background-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s;                     
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);                                                          
-    width: 25%;                                                                                         
-    min-width: 50px;
+    width: 80%;                                                                                         
+    max-width: 300px;
 }
 
 .btn:hover {
@@ -557,216 +605,3 @@ xuection {
     width: 100%;
     background-color: #111111;
 }
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-}
-
-header {
-    background-color: #131339;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-}
-
-/* Section Styling */
-main {
-    padding: 20px;
-}
-
-section {
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    margin-bottom: 15px;
-    font-size: 1.5em;
-    color: #131339;
-}
-
-ul {
-    list-style: disc;
-    margin-left: 20px;
-    color: #555;
-}
-
-/* Login Button */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-    background-color: #007bff;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-3px);
-}
-
-/* Summary Cards */
-.summary-cards {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.summary-card {
-    background-color: #f4f4f9;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 150px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.summary-card h3 {
-    font-size: 1em;
-    margin-bottom: 10px;
-}
-
-.summary-card p {
-    font-size: 1.5em;
-    color: #131339;
-}
-
-/* Logs Table */
-#logs-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-#logs-table th,
-#logs-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-#logs-table th {
-    cursor: pointer;
-    background-color: #f8f8f8;
-}
-
-#logs-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Spinner */
-.spinner {
-    display: none;
-    margin: 0 auto;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #007bff;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .summary-cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .btn {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-@media (max-width: 470px) {
-    body.* {
-        padding: 10px;
-        min-width: 462px;
-        width: 99%;
-    }
-
-    header {
-        font-size: 0.9em;
-    }
-
-    section {
-        padding: 15px;
-    }
-}
-        /* General page styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #1e1e2f;
-            color: #ddd;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Title styling */
-        h2 {
-            font-size: 2rem;
-            color: #ffffff;
-            margin-top: 20px;
-        }
-
-        /* Container styling */
-        .dashboard-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #28293e;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 1000px;
-            margin: 30px auto;
-        }
-
-        canvas {
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        canvas:hover {
-            transform: scale(1.05);
-        }
-
-        /* Style the error message */
-        .error-message {
-            color: #f04a47;
-            font-weight: bold;
-            margin-top: 10px;
-            display: none;
-        }

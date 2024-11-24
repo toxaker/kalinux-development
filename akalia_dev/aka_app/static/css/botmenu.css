@@ -133,3 +133,145 @@ body {
   background: #28293e;
   color: #fff;
 }
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background: #1a1a1a;
+  color: #eaeaea;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Header */
+.header {
+  background: #2a2a2a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #00d8ff;
+}
+
+.nav-links {
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #00d8ff;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Navigation toggle button */
+.nav-toggle {
+  background: none;
+  border: none;
+  color: #00d8ff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* Main Sections */
+.about-section, .features-section, .terminal-section {
+  padding: 80px 20px 40px; /* Leave space for fixed header */
+  text-align: center;
+}
+
+.about-section .btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: #00d8ff;
+  color: #1a1a1a;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.about-section .btn:hover {
+  background: #1a1a1a;
+  color: #00d8ff;
+  border: 1px solid #00d8ff;
+  transform: scale(1.1);
+}
+
+/* Terminal Styles */
+.terminal {
+  background: #000;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: monospace;
+}
+
+#terminal-input {
+  width: 100%;
+  background: #1a1a1a;
+  border: none;
+  color: #00d8ff;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+#terminal-input:focus {
+  outline: none;
+  border-bottom: 2px solid #00d8ff;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 10px 0;
+  background: #2a2a2a;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: #2a2a2a;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}

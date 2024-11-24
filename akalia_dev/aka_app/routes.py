@@ -37,18 +37,9 @@ def login():
         flash("Invalid username or password.", "danger")
     return render_template("login.html")
 
-
-@api_bp.route("/logout")
-@login_required
-def logout():
-    logout_user()
-    flash("You have been logged out.", "info")
-    return redirect(url_for("routes.login"))
-
-
 # Public Pages
 @api_bp.route("/")
-@limiter.limit("5 per minute")
+@limiter.limit("10 per minute")
 def index():
     log_ip_access("Index Page")
     return render_template("index.html")
@@ -61,34 +52,10 @@ def home():
     return render_template("home.html")
 
 
-@api_bp.route("/clientside")
-def clientside():
-    log_ip_access("Client-Side Page")
-    return render_template("clientside4.html")
-
-
-@api_bp.route("/toolsmenu")
-def toolsmenu():
-    log_ip_access("Tools Menu")
-    return render_template("toolsmenu.html")
-
-
 @api_bp.route("/info")
 def info():
     log_ip_access("Information Page")
     return render_template("info.html")
-
-
-@api_bp.route("/scantools")
-def scantools():
-    log_ip_access("Scan Tools Page")
-    return render_template("scantools.html")
-
-
-@api_bp.route("/webtools")
-def webtools():
-    log_ip_access("Web Tools Page")
-    return render_template("webtools.html")
 
 
 @api_bp.route("/tutorial")
@@ -103,10 +70,10 @@ def faq():
     return render_template("faq.html")
 
 
-@api_bp.route("/help")
-def help():
-    log_ip_access("Help Page")
-    return render_template("help.html")
+@api_bp.route("/letsgoauth")
+def letsgoauth():
+    log_ip_access("Auth Page")
+    return render_template("letsgoauth.html")
 
 
 @api_bp.route("/webdownload")
@@ -121,32 +88,57 @@ def hisecurity():
     return render_template("hisecurity.html")
 
 
+@api_bp.route("/dashpanel")
+@limiter.limit("10 per minute")
+def dashpanel():
+    log_ip_access("Dashpanel page")
+    return render_template("dashpanel.html")
+
+
 # Secure Section: Requires Login
-@api_bp.route("/secure/")
-@login_required
-def secure_home():
-    """
-    Home page for the secure area.
-    """
-    log_ip_access("Secure Home Page")
-    return render_template("secure_home.html", title="Secure Area")
+@api_bp.route("/secure/dashpanelda")
+def dashpanelda():
+    log_ip_access("Secure Bot Menu Page")
+    return render_template("secure/dashpanelda.html")
 
 
-@api_bp.route("/secure/page1")
-@login_required
-def secure_page1():
-    """
-    First additional secure page.
-    """
-    log_ip_access("Secure Page 1")
-    return render_template("secure_page1.html", title="Secure Page 1")
+@api_bp.route("/secure/scantools")
+def scantools():
+    log_ip_access("Scan Tools Page")
+    return render_template("scantools.html")
 
 
-@api_bp.route("/secure/page2")
-@login_required
-def secure_page2():
-    """
-    Second additional secure page.
-    """
-    log_ip_access("Secure Page 2")
-    return render_template("secure_page2.html", title="Secure Page 2")
+@api_bp.route("/secure/webtools")
+def webtools():
+    log_ip_access("Web Tools Page")
+    return render_template("webtools.html")
+
+
+@api_bp.route("/secure/logout")
+def logout():
+    logout_user()
+    flash("You have been logged out.", "info")
+    return redirect(url_for("routes.login"))
+
+
+@api_bp.route("/secure/clientside")
+def clientside():
+    log_ip_access("Client-Side Page")
+    return render_template("clientside4.html")
+
+
+@api_bp.route("/secure/toolsmenu")
+def toolsmenu():
+    log_ip_access("Tools Menu")
+    return render_template("toolsmenu.html")
+
+
+@api_bp.route("/secure/botmenu")
+def botmenu():
+    log_ip_access("Botmenu page")
+    return render_template("botmenu.html")
+
+@api_bp.route("/secure/guiinterface")
+def guiinterface():
+    log_ip_access("GUI page")
+    return render_template("guiinterface.html")

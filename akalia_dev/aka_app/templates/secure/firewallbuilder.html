@@ -5,41 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firewall Builder</title>
     <style>
+        /* Общие стили */
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             background-color: #f4f4f9;
             color: #333;
         }
+
         h1 {
             text-align: center;
             color: #444;
         }
+
+        /* Стили формы */
         form {
             background: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            max-width: 600px;
+            margin: auto;
         }
+
         form h2 {
-            margin-bottom: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007BFF;
         }
+
         form label {
             display: block;
             margin: 10px 0 5px;
         }
+
         form input {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
+            padding: 10px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 14px;
         }
+
+        form input:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
         button {
-            display: block;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background-color: #007BFF;
             color: white;
             border: none;
@@ -47,9 +64,53 @@
             cursor: pointer;
             font-size: 16px;
         }
+
         button:hover {
             background-color: #0056b3;
         }
+
+        /* Стили таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background: #007BFF;
+            color: white;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        /* Стили для кнопок таблицы */
+        .delete-rule-btn {
+            padding: 5px 10px;
+            background: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .delete-rule-btn:hover {
+            background: #b21f2d;
+        }
+
+        /* Анимации */
         .spinner {
             display: none;
             margin: 10px auto;
@@ -60,57 +121,44 @@
             height: 30px;
             animation: spin 1s linear infinite;
         }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .table-container {
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #fff;
-            margin-bottom: 20px;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ccc;
-        }
-        th {
-            background: #007BFF;
-            color: white;
-        }
-        tbody tr:nth-child(odd) {
-            background-color: #f9f9f9;
-        }
-        tbody tr:hover {
-            background-color: #f1f1f1;
-        }
+
         .highlight {
             animation: highlight 1s ease-in-out;
         }
+
         @keyframes highlight {
             0% { background-color: #28a745; }
             100% { background-color: transparent; }
         }
+
         .fade-out {
             animation: fadeOut 1s ease-in-out forwards;
         }
+
         @keyframes fadeOut {
             100% { opacity: 0; height: 0; padding: 0; }
         }
+
+        /* Сообщения обратной связи */
         .feedback {
             text-align: center;
             margin-top: 10px;
+            font-weight: bold;
         }
+
         .feedback.error {
             color: red;
         }
+
         .feedback.success {
             color: green;
         }
+
         @media (max-width: 768px) {
             form, table {
                 width: 100%;
@@ -123,7 +171,8 @@
 </head>
 <body>
     <h1>Firewall Builder</h1>
-
+  <nav>
+      <a href="#add-rule-form">Добавить правило</a>
     <!-- Add Rule Form -->
     <form id="add-rule-form">
         <h2>Add New Rule</h2>
@@ -152,25 +201,37 @@
 
     <!-- Existing Rules Table -->
     <h2>Existing Firewall Rules</h2>
-    <div class="table-container">
-        <table id="rules-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Direction</th>
-                    <th>Protocol</th>
-                    <th>Source IP</th>
-                    <th>Source Port</th>
-                    <th>Destination IP</th>
-                    <th>Destination Port</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dynamic rows added via JavaScript -->
-            </tbody>
-        </table>
-    </div>
+    <table id="rules-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Direction</th>
+                <th>Protocol</th>
+                <th>Source IP</th>
+                <th>Source Port</th>
+                <th>Destination IP</th>
+                <th>Destination Port</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tbody>
+            {% for rule in rules %}
+            <tr id="rule-{{ rule.id }}">
+                <td>{{ rule.id }}</td>
+                <td>{{ rule.direction }}</td>
+                <td>{{ rule.protocol }}</td>
+                <td>{{ rule.source_ip }}</td>
+                <td>{{ rule.source_port }}</td>
+                <td>{{ rule.destination_ip }}</td>
+                <td>{{ rule.destination_port }}</td>
+                <td>
+                    <button class="delete-rule-btn" data-id="{{ rule.id }}">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     <!-- JavaScript -->
     <script>
@@ -178,41 +239,6 @@
         const rulesTable = document.getElementById('rules-table').querySelector('tbody');
         const addSpinner = document.getElementById('add-spinner');
         const addFeedback = document.getElementById('add-feedback');
-
-        // Fetch and render rules on page load
-        async function fetchRules() {
-            try {
-                const response = await fetch('/firewall_rules');
-                const data = await response.json();
-                if (data.success) {
-                    renderRules(data.data);
-                } else {
-                    console.error('Failed to fetch rules:', data.error);
-                }
-            } catch (error) {
-                console.error('Error fetching rules:', error);
-            }
-        }
-
-        function renderRules(rules) {
-            rules.forEach(rule => {
-                const row = document.createElement('tr');
-                row.id = `rule-${rule.id}`;
-                row.innerHTML = `
-                    <td>${rule.id}</td>
-                    <td>${rule.direction}</td>
-                    <td>${rule.protocol}</td>
-                    <td>${rule.source_ip || 'Any'}</td>
-                    <td>${rule.source_port || 'Any'}</td>
-                    <td>${rule.destination_ip || 'Any'}</td>
-                    <td>${rule.destination_port || 'Any'}</td>
-                    <td>
-                        <button class="delete-rule-btn" data-id="${rule.id}">Delete</button>
-                    </td>
-                `;
-                rulesTable.appendChild(row);
-            });
-        }
 
         // Add Rule
         addForm.addEventListener('submit', async (e) => {
@@ -222,16 +248,27 @@
             const formData = new FormData(addForm);
 
             try {
-                const response = await fetch('/firewall_rules', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(Object.fromEntries(formData.entries())),
-                });
+                const response = await fetch('/firewallbuilder', { method: 'POST', body: formData });
                 addSpinner.style.display = 'none';
 
                 if (response.ok) {
                     const newRule = await response.json();
-                    renderRules([newRule.data]);
+                    const newRow = document.createElement('tr');
+                    newRow.id = `rule-${newRule.id}`;
+                    newRow.innerHTML = `
+                        <td>${newRule.id}</td>
+                        <td>${newRule.direction}</td>
+                        <td>${newRule.protocol}</td>
+                        <td>${newRule.source_ip}</td>
+                        <td>${newRule.source_port}</td>
+                        <td>${newRule.destination_ip}</td>
+                        <td>${newRule.destination_port}</td>
+                        <td>
+                            <button class="delete-rule-btn" data-id="${newRule.id}">Delete</button>
+                        </td>
+                    `;
+                   newRow.classList.add('highlight');
+                    rulesTable.appendChild(newRow);
                     addForm.reset();
                     addFeedback.textContent = 'Rule added successfully!';
                     addFeedback.className = 'feedback success';
@@ -252,7 +289,7 @@
                 const row = document.getElementById(`rule-${ruleId}`);
 
                 try {
-                    const response = await fetch(`/firewall_rules/${ruleId}`, { method: 'DELETE' });
+                    const response = await fetch(`/firewallbuilder/${ruleId}`, { method: 'DELETE' });
 
                     if (response.ok) {
                         row.classList.add('fade-out');
@@ -265,9 +302,45 @@
                 }
             }
         });
-
-        // Initialize
-        fetchRules();
     </script>
+    <script src="/static/js/firewall.js"></script>
 </body>
+ <div class="bottom-menu">
+    <a href="#" class="bottom-menu-item" id="menu-button">
+    <img src="/static/images/5.png" alt="Menu Icon">
+  </a>
+ </div>
+<div class="popup-overlay" id="popup-overlay">
+  <div class="popup-menu" id="popup-menu">
+    <button id="close-button" class="close-button">Закрыть</button> 
+    <ul>
+       <li><a href="/secure/dashpanelda.html">Сервер-бот</a></li>
+       <li><a href="/secure/tooldmenu.html">Инструменты</a></li>
+       <li><a href="/tutorial">Помощь</a></li>
+       <li><a href="/">Выход</a></li>
+    </ul>
+<script>
+const menuButton = document.getElementById('menu-button');
+const menuOverlay = document.getElementById('popup-overlay');
+const closeButton = document.getElementById('close-button');
+
+// Open the menu
+menuButton.addEventListener('click', () => {
+  menuOverlay.classList.add('active'); // Show the popup
+});
+
+// Close the menu when clicking the "Close" button
+closeButton.addEventListener('click', () => {
+  menuOverlay.classList.remove('active'); // Hide the popup
+});
+
+// Close the menu when clicking outside the popup
+menuOverlay.addEventListener('click', (e) => {
+  if (e.target === menuOverlay) {
+    menuOverlay.classList.remove('active'); // Hide the popup
+  }
+});
+</script>
+   </div>
+ </div>
 </html>

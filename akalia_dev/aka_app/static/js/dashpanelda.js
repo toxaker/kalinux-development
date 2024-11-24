@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+kdocument.addEventListener('DOMContentLoaded', () => {
     const logsTable = document.getElementById('logs-table').querySelector('tbody');
     const ruleCount = document.getElementById('rule-count');
     const logCount = document.getElementById('log-count');
@@ -72,3 +72,4 @@ document.addEventListener('DOMContentLoaded', () => {
     loadLogs();
     loadStats();
 });
+

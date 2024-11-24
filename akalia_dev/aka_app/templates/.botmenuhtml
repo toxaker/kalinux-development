@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KaliDev Security Bot - Automate your security tasks">
+  <title>KaliDev Security Bot</title>
+  <link rel="stylesheet" href="css/botmenu.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <h1>KaliDev Bot</h1>
+    </div>
+    <button class="nav-toggle" id="nav-toggle">&#9776;</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#terminal">Terminal</a></li>
+    </ul>
+  </header>
+  
+  <main>
+    <section id="about" class="about-section">
+      <h2>About</h2>
+      <p>Welcome to KaliDev Security Bot! Your one-stop solution for automated security tasks.</p>
+      <a href="https://t.me/kalidev_securitybot" class="btn">Open Bot</a>
+    </section>
+    
+    <section id="features" class="features-section">
+      <h2>Features</h2>
+      <ul>
+        <li>Real-time security monitoring</li>
+        <li>Automated notifications and alerts</li>
+        <li>Customizable settings for user control</li>
+      </ul>
+    </section>
+
+    <section id="terminal" class="terminal-section">
+      <h2>Simulated Terminal</h2>
+      <div class="terminal">
+        <p class="typing-effect">Welcome to KaliDev Security Bot!</p>
+        <p>$ Type "help" for options...</p>
+        <input type="text" id="terminal-input" placeholder="Type a command...">
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <p>© 2024 KaliDev. All rights reserved.</p>
+  </footer>
+  
+  <script src="botmenu.js"></script>
+</body>
+</html>

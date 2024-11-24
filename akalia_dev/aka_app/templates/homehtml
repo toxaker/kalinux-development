@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalinux | Security</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="logo.png" alt="Kalinux Logo" class="logo">
+        <h1>Kalinux | Security</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#documentation">Documentation</a></li>
+                <li><a href="#quickstart">Quick Start</a></li>
+                <li><a href="#socials">Socials</a></li>
+                <li><a href="#firewallbuilder">Firewall Builder</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section id="hero">
+            <h2>Welcome to Kalinux</h2>
+            <p>Enhance your security with cutting-edge tools and reliable resources.</p>
+            <a href="#quickstart" class="button">Get Started</a>
+        </section>
+
+        <!-- Documentation Section -->
+        <section id="documentation">
+            <h3>Documentation</h3>
+            <p>Learn more about our features and capabilities in our comprehensive documentation.</p>
+            <a href="/docs" class="button">Read Documentation</a>
+        </section>
+
+        <!-- Quick Start Section -->
+        <section id="quickstart">
+            <h3>Quick Start</h3>
+            <p>Get started with Kalinux in just a few simple steps. Follow our guide and start today!</p>
+            <a href="/quickstart" class="button">Quick Start</a>
+        </section>
+
+        <!-- Social Media Links -->
+        <section id="socials">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="https://github.com/toxaker" target="_blank">GitHub</a>
+                <a href="https://gitlab.com/aka_toxaker" target="_blank">GitLab</a>
+                <a href="https://t.me/app_kalinux_world_bot/webkalinux" target="_blank">Telegram</a>
+            </div>
+        </section>
+
+        <!-- Firewall Builder -->
+        <section id="firewallbuilder">
+            <h3>Firewall Rule Builder</h3>
+            <p>Create and manage your firewall rules with ease using our intuitive tool.</p>
+            <a href="/firewallbuilder" class="button">Open Firewall Builder</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+        <div class="menu">
+            <a href="#hero">Home</a>
+            <a href="#documentation">Docs</a>
+            <a href="#quickstart">Quick Start</a>
+            <a href="#socials">Socials</a>
+            <a href="#firewallbuilder">Firewall Builder</a>
+        </div>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+<div class="page-footer">
+       	    <p>© 2024. Продукт под MIT лицензией, авторство: <a href="https://t.me/toxakalinin">А.К.А</a> . Исходный код доступен на <a href="https://github.com/toxaker/">GitHub</a>
+</div>
+<div class="additional-content"></div>
+</main>
+<footer>
+        <div class="bottom-menu">
+            <a href="/firewallbuilder" class="menu-item">
+                <img src="/static/appli.png" alt="App Icon">
+            </a>
+            <a href="/dashpanel" class="menu-item">
+                <img src="/static/web.png" alt="Web Icon">
+            </a>
+            <a href="/hostreview" class="menu-item">
+                <img src="/static/faq.png" alt="About Icon">
+            </a>
+            <a href="/quickactions" class="menu-item">
+                <img src="/static/help.png" alt="Help Icon">
+            </a>
+        </div>
+</footer>
+</body>
+</html>

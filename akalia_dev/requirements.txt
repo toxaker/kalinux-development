@@ -21,7 +21,7 @@ jsonify
 limits
 loguru
 psutil
-shutil
+shutils
 python-dotenv
 python-telegram-bot
 requests

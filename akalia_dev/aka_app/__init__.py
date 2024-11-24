@@ -1,11 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
-from .models import db, User
+from flask_socketio import SocketIO
 
 # Initialize extensions
 db = SQLAlchemy()
-login_manager = LoginManager()
+socketio = SocketIO()  # Initialize SocketIO
 
 def create_app():
     app = Flask(__name__)
@@ -13,16 +12,11 @@ def create_app():
 
     # Initialize extensions
     db.init_app(app)
-    login_manager.init_app(app)
+    socketio.init_app(app)  # Bind SocketIO to the Flask app
 
     # Create database tables
     with app.app_context():
         db.create_all()
-
-    # Define user_loader for Flask-Login
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
 
     # Register blueprints
     from .api import api_bp

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalinux | Security</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="animated-header">
+        <div class="header-content">
+            <img src="logo.png" alt="Логотип" class="logo">
+            <h1>Kalinux | Security</h1>
+        </div>
+        <nav class="main-menu">
+            <ul class="menu">
+                <li><a href="#documentation">Документация</a></li>
+                <li><a href="#installation">Установка</a></li>
+                <li><a href="#quickstart">Быстрый старт</a></li>
+                <li><a href="#socials">Соцсети</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <h2>Добро пожаловать в Kalinux</h2>
+            <p>Безопасность, производительность и удобство – всё в одном приложении.</p>
+            <button onclick="window.location.href='#quickstart'">Начать прямо сейчас</button>
+        </section>
+        
+        <!-- Documentation Section -->
+        <section id="documentation">
+            <h3>Документация</h3>
+            <p>Узнайте больше о наших функциях и возможностях в полной документации.</p>
+            <a href="/docs" class="button">Читать документацию</a>
+        </section>
+        
+        <!-- Installation Section -->
+        <section id="installation">
+            <h3>Установка</h3>
+            <p>Подробные инструкции для быстрой установки нашего приложения на разные платформы.</p>
+            <a href="/install" class="button">Перейти к установке</a>
+        </section>
+        
+        <!-- Quick Start Section -->
+        <section id="quickstart">
+            <h3>Быстрый старт</h3>
+            <p>Попробуйте приложение за считанные минуты, следуя нашему гайду.</p>
+            <a href="/quickstart" class="button">Начать</a>
+        </section>
+        
+        <!-- Social Media Links -->
+        <section id="socials">
+            <h3>Подписывайтесь на нас</h3>
+            <div class="social-links">
+                <a href="https://github.com/toxaker" target="_blank">GitHub</a>
+                <a href="https://gitlab.com/aka_toxaker" target="_blank">GitLab</a>
+                <a href="https://t.me/app_kalinux_world_bot/webkalinux" target="_blank">Telegram</a>
+            </div>
+        </section>
+        
+        <!-- FAQ Section -->
+        <section id="faq">
+            <h3>FAQ</h3>
+            <p>Часто задаваемые вопросы и ответы на них.</p>
+            <a href="/faq" class="button">Посмотреть FAQ</a>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="bottom-menu">
+            <a href="/" class="menu-item">Главная</a>
+            <a href="/docs" class="menu-item">Документация</a>
+            <a href="/faq" class="menu-item">FAQ</a>
+            <a href="/contact" class="menu-item">Контакты</a>
+            <a href="/firewallbuilder" class="menu-item">FirewallBuilder</a>
+        </div>
+        <div class="page-footer">
+            <p>© 2024 Kalinux | Security. Разработано <a href="https://t.me/toxakalinin">А.К.А</a>. 
+            Исходный код доступен на <a href="https://github.com/toxaker" target="_blank">GitHub</a>.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

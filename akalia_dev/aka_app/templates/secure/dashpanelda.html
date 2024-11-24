@@ -3,26 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Управление сервером</title>
     <link rel="stylesheet" href="/static/css/dashpanelda.css">
 </head>
 <body>
     <!-- Header -->
     <header>
         <h1>Admin Dashboard</h1>
-        <p>Welcome, {{ username }}. Manage your tools, monitor logs, and more from here.</p>
+        <p>Access all tools and monitoring options from here.</p>
     </header>
-
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="/toolsmenu.html">Tools Menu</a></li>
-            <li><a href="/scantools.html">Scan Tools</a></li>
-            <li><a href="/webtools.html">Web Tools</a></li>
-            <li><a href="/firewallbuilder.html">Firewall Builder</a></li>
-            <li><a href="/logout" class="logout-btn">Logout</a></li>
-        </ul>
-    </nav>
 
     <!-- Main Content -->
     <main>
@@ -107,4 +96,46 @@
 
     <script src="/static/js/dashpanelda.js"></script>
 </body>
+    </footer>
+ <div class="bottom-menu">
+    <a href="#" class="bottom-menu-item" id="menu-button">
+    <img src="/static/images/5.png" alt="Menu Icon">
+  </a>
+ </div>
+<div class="popup-overlay" id="popup-overlay">
+  <div class="popup-menu" id="popup-menu">
+    <button id="close-button" class="close-button">Закрыть</button> 
+    <ul>
+       <li><a href="/secure/toolsmenu.html">Инструменты</a></li>
+       <li><a href="/secure/scantools.html">Сканировать...</a></li>
+       <li><a href="/secure/webtools.html">Веб-функции</a></li>
+       <li><a href="/secure/clientside4.html">Статистика</a></li>
+       <li><a href="/secure/firewallbuilder.html/#add-rule-form">Добавить правило</a></li>
+       <li><a href="/">Выход</a></li>
+    </ul>
+<script>
+const menuButton = document.getElementById('menu-button');
+const menuOverlay = document.getElementById('popup-overlay');
+const closeButton = document.getElementById('close-button');
+
+// Open the menu
+menuButton.addEventListener('click', () => {
+  menuOverlay.classList.add('active'); // Show the popup
+});
+
+// Close the menu when clicking the "Close" button
+closeButton.addEventListener('click', () => {
+  menuOverlay.classList.remove('active'); // Hide the popup
+});
+
+// Close the menu when clicking outside the popup
+menuOverlay.addEventListener('click', (e) => {
+  if (e.target === menuOverlay) {
+    menuOverlay.classList.remove('active'); // Hide the popup
+  }
+});
+</script>
+   </div>
+ </div>
+
 </html>
