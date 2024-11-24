@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalinux | Security</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Kalinux | Security Tutorial</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header class="animated-header">
         <div class="header-content">
-            <h1>Туториал</h1>
+            <img src="/static/images/logo.png" alt="Logo" class="logo">
+            <h1>Kalinux Security Project</h1>
         </div>
     </header>
-<style>
+ <style>
         body {
-	    margin: 0;
+            margin: 0;
             font-family: Arial, sans-serif;
             background-color: #0c0c25;
             color: #fff;
@@ -85,8 +87,8 @@
 
         /* Пример содержимого */
         .additional-content {
-	    background-color: #0c0c25;
-            margin: 110px auto;
+            background-color: #0c0c25;
+            margin: 60px auto;
             border-radius: 10px;
         }
 
@@ -112,8 +114,8 @@
             position: fixed;
             width: 100%;
             bottom: 0;
-            opacity: 0.8;
-            transition: opacity 0.6s ease;
+            opacity: 0.85;
+            transition: opacity 0.5s ease;
             z-index: 1000;
         }
 
@@ -121,9 +123,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-	    background-color: #002141;
+            background-color: #002141;
             text-decoration: none;
-            color: #fff;
+            color: #131339;
             padding-right: 10px;
             width: 80px;
         }
@@ -133,9 +135,9 @@
             height: 80px;
             margin-bottom: 0px;
             border: 1px solid #00ffff;
-            border-radius: 8px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-	}
+            border-radius: 11px;
+            box-shadow: 0 10px 17px rgba(0, 0, 0, 0.5);
+        }
 
         footer .menu-item span {
             font-size: 3vw;
@@ -144,7 +146,7 @@
         footer .menu-item:hover {
             background-color: #180032;
             border-radius: 10px;
-            transition: background-color 0.6s ease;
+            transition: background-color 0.8s ease;
         }
 
         /* Футер в конце страницы */
@@ -153,13 +155,12 @@
             padding: 0px;
             text-align: center;
             margin-top: 0px;
-	    border: 2px solid #111111;
+            border: 2px solid #111111;
             border-radius: 8px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 1);
         }
 
         .page-footer p {
-            margin: 0;
         }
 
         @media (min-width: 768px) {
@@ -180,52 +181,79 @@
             }
         }
     </style>
+
+
     <main>
-        <div class="content">
-            {% block content %}
-            <h2>На данный момент у нас доступны следующие категории:</h2>
+<section class="about-project">
+    <h2>Kalinux Security — Комплексная Платформа Защиты Серверов</h2>
+    <p>Kalinux Security — это высокотехнологичная и мощная система безопасности для управления и анализа серверного трафика, созданная для профессионалов в области IT, системных администраторов и UNIX-пользователей.</p>
+    
+    <p>С её помощью можно выполнять непрерывный мониторинг состояния системы, анализировать логи и автоматизировать процесс выявления уязвимостей. Платформа интегрирует надёжные инструменты защиты, включая iptables и fail2ban, а также сканеры безопасности Lynis, Rkhunter и другие.</p>
+
+    <p>### Ключевые Функции Kalinux Security:</p>
+    <ul>
+        <li><strong>Мониторинг Системы</strong> — Отслеживание производительности и безопасности в реальном времени.</li>
+        <li><strong>Анализ Логов</strong> — Глубокий анализ системных логов для обнаружения подозрительной активности.</li>
+        <li><strong>Автоматизация Защиты</strong> — Интеграция с fail2ban для автоматического реагирования на атаки и уязвимости.</li>
+        <li><strong>Сканирование Уязвимостей</strong> — Инструменты Lynis и Rkhunter для глубокого анализа безопасности системы.</li>
+    </ul>
+
+    <h3>Инструменты безопасности</h3>
+    <p>Наш продукт упрощает настройку и управление правилами iptables, добавляя полезные функции, такие как уведомления, блокировка подозрительных IP-адресов и мгновенные оповещения через Telegram. Используя автоматизацию, можно настроить полную блокировку злонамеренного трафика без лишних трудозатрат.</p>
+
+    <h2>Гайд по Установке и Настройке</h2>
+    <ol>
+        <li>
+            <strong>Подготовка Серверного Окружения</strong>
+            <p>Платформа поддерживает работу на Debian 12 с обязательной установкой Nginx и Python. Рекомендуется настройка Gunicorn для запуска приложения.</p>
+        </li>
+        <li>
+            <strong>Загрузка и Установка Kalinux Security</strong>
+            <p>Скачайте проект с GitHub и установите зависимости через команду:</p>
+            <pre><code>git clone https://github.com/toxaker/kalinux_security && cd kalinux_security && pip install -r requirements.txt</code></pre>
+        </li>
+        <li>
+            <strong>Конфигурация API и Параметров Безопасности</strong>
+            <p>Настройте переменные окружения, необходимые для API, а также ключи для защиты данных в <code>.env</code> файле.</p>
+        </li>
+        <li>
+            <strong>Запуск Сервиса и Конфигурация Nginx</strong>
+            <p>Для стабильной работы используйте Gunicorn для запуска:</p>
+            <pre><code>gunicorn -w 4 -b 127.0.0.1:8000 wsgi:app</code></pre>
+            <p>После запуска настройте проксирование на Nginx для перенаправления запросов на приложение.</p>
+        </li>
+        <li>
+            <strong>Тестирование и Отладка</strong>
+            <p>После установки рекомендуется протестировать работу сервиса и убедиться в корректности конфигурации с использованием команд:</p>
+            <pre><code>sudo systemctl restart nginx && sudo systemctl status gunicorn</code></pre>
+            <p>Для мониторинга активности и выявления ошибок используйте логи Gunicorn и Nginx.</p>
+        </li>
+    </ol>
+</section>
+        <section class="additional-links">
+            <h2>Полезные ссылки</h2>
             <nav class="animated-menu">
                 <ul class="menu">
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/webtools">Сетевые инструменты</a></li>
-                    <li><a href="/scantools">Инструменты для сканирования</a></li>
-                    <li><a href="/advancedtools">Продвинутые</a></li>
+                    <li><a href="/info">Информация</a></li>
+                    <li><a href="/toolsmenu">Инструменты</a></li>
+                    <li><a href="/tutorial">Гайды и референс</a></li>
+                    <li><a href="/developers">Разработка</a></li>
                 </ul>
             </nav>
-
-            <!-- Кнопка возврата в главное меню -->
-            <button onclick="window.location.href='/'">Вернуться в главное меню</button>
-            {% endblock %}
-        </div>
+        </section>
     </main>
-<script>
-        window.addEventListener('scroll', function() {
-            if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
-                document.body.classList.add('show-footer');
-            } else {
-                document.body.classList.remove('show-footer');
-            }
-        });
-    </script>
-<div class="page-footer">
-       	    <p>© 2024 security.kalinux.world. Продукт под MIT лицензией, авторство: <a href="https://t.me/toxakalinin">А.К.А</a> . Исходный код доступен на <a href="https://github.com/toxaker/">GitHub</a>
-</div>
-<div class="additional-content"></div>
-<footer>
-        <div class="bottom-menu">
-            <a href="https://security.kalinux.world/" class="menu-item">
-                <img src="/static/appli.png" alt="App Icon">
-            </a>
-            <a href="https://security.kalinux.world/" class="menu-item">
-                <img src="/static/web.png" alt="Web Icon">
-            </a>
-            <a href="/faq" class="menu-item">
-                <img src="/static/faq.png" alt="About Icon">
-            </a>
-            <a href="/help" class="menu-item">
-                <img src="/static/help.png" alt="Help Icon">
-            </a>
+
+    <footer>
+        <div class="social-links">
+            <h3>Следите за нами</h3>
+            <a href="https://github.com/toxaker/" target="_blank">GitHub</a>
+            <a href="https://gitlab.com/aka_toxaker" target="_blank">GitLab</a>
+            <a href="mailto:kalinux@hacking.net.ru">Email Us</a>
+            <a href="https://t.me/kalinuxsecurity_bot/application_tg" target="_blank">Telegram Bot</a>
         </div>
-</footer>
+        <div class="page-footer">
+            <p>© 2024 Kalinux Security. Исходный код доступен на <a href="https://github.com/toxaker/">GitHub</a>. Авторство: <a href="https://t.me/toxakalinin">А.К.А</a></p>
+        </div>
+    </footer>
 </body>
 </html>

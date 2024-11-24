@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalinux | Security</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Скачайте Kalinux Security</h1>
+        <p>Усилите защиту и контроль над сервером с помощью передового решения Kalinux Security.</p>
+    </header>
+
+    <main>
+        <section class="download-section">
+            <h2>Скачать приложение</h2>
+            <p>Нажмите на кнопку ниже, чтобы скачать пакет Kalinux Security.</p>
+            <a href="" class="download-button">Скачать Kalinux Security</a>
+        </section>
+
+        <section class="installation-instructions">
+            <h2>Краткое руководство по установке</h2>
+            <ol>
+                <li><strong>Подготовка окружения:</strong> Убедитесь, что ваш сервер настроен на Debian 12, с установленными Nginx, Python и Gunicorn.</li>
+                <li><strong>Загрузка и установка:</strong> После скачивания распакуйте архив и установите зависимости с помощью команды:
+                    <pre><code>pip install -r requirements.txt</code></pre>
+                </li>
+                <li><strong>Настройка:</strong> Задайте необходимые ключи API в <code>.env</code> файле, согласно документации.</li>
+                <li><strong>Запуск:</strong> Запустите приложение через Gunicorn:
+                    <pre><code>gunicorn -w 4 -b 127.0.0.1:8000 wsgi:app</code></pre>
+                    Не забудьте настроить проксирование на Nginx.
+                </li>
+            </ol>
+            <p>Для подробной информации переходите в раздел <a href="/tutorial">Tutorial</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Kalinux | Security. Поддержка: <a href="mailto:kalinux@hacking.net.ru">Свяжитесь с нами</a></p>
+    </footer>
+</body>
+</html>

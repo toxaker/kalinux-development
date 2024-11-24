@@ -1,5 +1,8 @@
+pip
+setuptools
 gunicorn
 flask
+redis
 bcrypt
 celery
 click-didyoumean
@@ -18,7 +21,7 @@ jsonify
 limits
 loguru
 psutil
-shutils
+shutil
 python-dotenv
 python-telegram-bot
 requests
@@ -30,3 +33,4 @@ WTForms
 flask_sqlalchemy
 eventlet
 flask_socketio
+aiohttp
