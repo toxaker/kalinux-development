@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/css/dashpanelda.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Admin Dashboard</h1>
+        <p>Welcome, {{ username }}. Manage your tools, monitor logs, and more from here.</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="/toolsmenu.html">Tools Menu</a></li>
+            <li><a href="/scantools.html">Scan Tools</a></li>
+            <li><a href="/webtools.html">Web Tools</a></li>
+            <li><a href="/firewallbuilder.html">Firewall Builder</a></li>
+            <li><a href="/logout" class="logout-btn">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Tools Section -->
+        <section id="tools">
+            <h2>Quick Access Tools</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Tools Menu</h3>
+                    <p>Access all utilities and settings in one place.</p>
+                    <a href="/toolsmenu.html" class="btn">Go</a>
+                </div>
+                <div class="card">
+                    <h3>Scan Tools</h3>
+                    <p>Perform network and vulnerability scans.</p>
+                    <a href="/scantools.html" class="btn">Go</a>
+                </div>
+                <div class="card">
+                    <h3>Web Tools</h3>
+                    <p>Web-based utilities for testing and debugging.</p>
+                    <a href="/webtools.html" class="btn">Go</a>
+                </div>
+                <div class="card">
+                    <h3>Firewall Builder</h3>
+                    <p>Design and deploy custom firewall rules.</p>
+                    <a href="/firewallbuilder.html" class="btn">Go</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Logs and Stats Section -->
+        <section id="logs-stats">
+            <h2>Logs and Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat">
+                    <h3>Total Firewall Rules</h3>
+                    <p id="rule-count">Fetching...</p>
+                </div>
+                <div class="stat">
+                    <h3>Total Logs</h3>
+                    <p id="log-count">Fetching...</p>
+                </div>
+                <div class="stat">
+                    <h3>Server Uptime</h3>
+                    <p id="server-uptime">Fetching...</p>
+                </div>
+                <div class="stat">
+                    <h3>Active Users</h3>
+                    <p id="active-users">Fetching...</p>
+                </div>
+            </div>
+            <table id="logs-table">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">Timestamp</th>
+                        <th onclick="sortTable(1)">IP Address</th>
+                        <th onclick="sortTable(2)">Action</th>
+                        <th onclick="sortTable(3)">User Agent</th>
+                        <th onclick="sortTable(4)">Geo Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamically populated rows -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Widgets Section -->
+        <section id="widgets">
+            <h2>Utilities</h2>
+            <div class="widget">
+                <h3>Weather</h3>
+                <p>Sunny, 25°C</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Admin Dashboard. All rights reserved.</p>
+    </footer>
+
+    <script src="/static/js/dashpanelda.js"></script>
+</body>
+</html>

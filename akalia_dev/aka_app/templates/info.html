@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalinux | INFO</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <header class="animated-header">
+        <div class="header-content">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Логотип сайта" class="logo">
+            <h1>Информация</h1>
+        </div>
+    </header>
+<style>
+        body {
+	    margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0c0c25;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Верхняя часть страницы */
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0c0c25;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        h1 {
+            font-size: 4vw;
+            margin: 0;
+        }
+
+        .content {
+            padding: 20px;
+            flex: 1; /* Позволяет контенту занимать всё пространство между хедером и футером */
+        }
+
+        h2 {
+            font-size: 5vw;
+            margin-bottom: 20px;
+        }
+
+        .animated-text {
+            font-size: 3vw;
+            margin-bottom: 20px;
+        }
+
+        /* Меню навигации */
+        .animated-menu ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .menu li {
+            margin: 10px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            background-color: #180032;
+            border-radius: 5px;
+        }
+
+        .menu a:hover {
+            background-color: #011f3f;
+        }
+
+        /* Пример содержимого */
+        .additional-content {
+	    background-color: #0c0c25;
+            margin: 110px auto;
+            border-radius: 10px;
+        }
+
+        /* Ссылки на соцсети */
+        .social-links {
+            margin: 40px 0;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Нижнее меню (фиксированное внизу экрана) */
+        footer .bottom-menu {
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            opacity: 0.8;
+            transition: opacity 0.6s ease;
+            z-index: 1000;
+        }
+
+        footer .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+	    background-color: #002141;
+            text-decoration: none;
+            color: #fff;
+            padding-right: 10px;
+            width: 80px;
+        }
+
+        footer .menu-item img {
+            width: 90px;
+            height: 80px;
+            margin-bottom: 0px;
+            border: 1px solid #00ffff;
+            border-radius: 8px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+	}
+
+        footer .menu-item span {
+            font-size: 3vw;
+        }
+
+        footer .menu-item:hover {
+            background-color: #180032;
+            border-radius: 10px;
+            transition: background-color 0.6s ease;
+        }
+
+        /* Футер в конце страницы */
+        .page-footer {
+            background-color: #111111;
+            padding: 0px;
+            text-align: center;
+            margin-top: 0px;
+	    border: 2px solid #111111;
+            border-radius: 8px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-footer p {
+            margin: 0;
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 2vw;
+            }
+
+            h2 {
+                font-size: 3vw;
+            }
+
+            .animated-text {
+                font-size: 2vw;
+            }
+
+            footer .menu-item span {
+                font-size: 1vw;
+            }
+        }
+    </style>
+    <nav class="animated-menu">
+        <ul class="menu">
+            <li><a href="https://security.kalinux.world/">Главная</a></li>
+            <li><a href="/info">Информация</a></li>
+            <li><a href="/toolsmenu">Инструменты</a></li>
+            <li><a href="/tutorial">Туториал</a></li>
+            <li><a href="/developers">Разработчики</a></li>
+            <li><a href="/donate">Пожертвовать</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="content">
+            {% block content %}
+            <h2 class="animated-title">О проекте</h2>
+            <p class="animated-text">Xaker Security предоставляет простые, но мощные инструменты для защиты данных.</p>
+
+            <section>
+                <h3>Наши преимущества</h3>
+                <p>Мы предлагаем бесплатные решения, поддерживаемые сообществом и адаптированные для пользователей разного уровня.</p>
+                <ul>
+                    <li>Открытые и бесплатные инструменты</li>
+                    <li>Поддержка со стороны сообщества</li>
+                    <li>Гибкость использования на разных платформах</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>История проекта</h3>
+                <p>Kalinux  родился как ответ на дефицит доступных инструментов для тестирования безопасности. Сегодня мы стали международной платформой для кибербезопасности.</p>
+            </section>
+            {% endblock %}
+        </div>
+<div class="page-footer">
+       	    <p>© 2024 security.kalinux.world. Продукт под MIT лицензией, авторство: <a href="https://t.me/toxakalinin">А.К.А</a> . Исходный код доступен на <a href="https://github.com/toxaker/">GitHub</a>
+</div>
+<footer>
+        <div class="bottom-menu">
+            <a href="https://security.kalinux.world/" class="menu-item">
+                <img src="/static/appli.png" alt="App Icon">
+            </a>
+            <a href="https://security.kalinux.world/" class="menu-item">
+                <img src="/static/web.png" alt="Web Icon">
+            </a>
+            <a href="/faq" class="menu-item">
+                <img src="/static/faq.png" alt="About Icon">
+            </a>
+            <a href="/help" class="menu-item">
+                <img src="/static/help.png" alt="Help Icon">
+            </a>
+        </div>
+ </body>
+</footer>

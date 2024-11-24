@@ -1,0 +1,247 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Firewall Builder</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                background-color: #f4f4f9;
+                color: #333;
+            }
+            h1 {
+                color: #444;
+            }
+            form {
+                background: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                background: #fff;
+                margin-bottom: 20px;
+            }
+            th, td {
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid #ccc;
+            }
+            th {
+                background: #007BFF;
+                color: white;
+            }
+            .highlight {
+                animation: highlight 1s ease-in-out;
+            }
+            @keyframes highlight {
+                0% { background-color: #28a745; }
+                100% { background-color: transparent; }
+            }
+            .fade-out {
+                animation: fadeOut 1s ease-in-out forwards;
+            }
+            @keyframes fadeOut {
+                100% { opacity: 0; height: 0; padding: 0; }
+            }
+            button {
+                padding: 10px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+            .error {
+                color: red;
+                margin-top: 10px;
+            }
+            .success {
+                color: green;
+                margin-top: 10px;
+            }
+            .spinner {
+                display: none;
+                margin: 10px auto;
+                border: 4px solid #f3f3f3;
+                border-top: 4px solid #007BFF;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                animation: spin 1s linear infinite;
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            @media (max-width: 768px) {
+                form, table {
+                    width: 100%;
+                }
+                th, td {
+                    font-size: 14px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Firewall Builder</h1>
+
+        <form id="add-rule-form">
+            <h2>Add New Rule</h2>
+            <label>Direction:</label>
+            <input type="text" name="direction" placeholder="e.g., IN/OUT" required>
+
+            <label>Protocol:</label>
+            <input type="text" name="protocol" placeholder="e.g., TCP/UDP" required>
+
+            <label>Source IP:</label>
+            <input type="text" name="source_ip" placeholder="e.g., 192.168.1.1">
+
+            <label>Source Port:</label>
+            <input type="text" name="source_port" placeholder="e.g., 80">
+
+            <label>Destination IP:</label>
+            <input type="text" name="destination_ip" placeholder="e.g., 10.0.0.1">
+
+            <label>Destination Port:</label>
+            <input type="text" name="destination_port" placeholder="e.g., 443">
+
+            <input type="hidden" name="action" value="add">
+            <button type="submit">Add Rule</button>
+            <div class="spinner" id="add-spinner"></div>
+            <div id="add-feedback" class="error"></div>
+        </form>
+
+        <h2>Existing Firewall Rules</h2>
+        <table id="rules-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Direction</th>
+                    <th>Protocol</th>
+                    <th>Source IP</th>
+                    <th>Source Port</th>
+                    <th>Destination IP</th>
+                    <th>Destination Port</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rule in rules %}
+                <tr id="rule-{{ rule.id }}">
+                    <td>{{ rule.id }}</td>
+                    <td>{{ rule.direction }}</td>
+                    <td>{{ rule.protocol }}</td>
+                    <td>{{ rule.source_ip }}</td>
+                    <td>{{ rule.source_port }}</td>
+                    <td>{{ rule.destination_ip }}</td>
+                    <td>{{ rule.destination_port }}</td>
+                    <td>
+                        <form class="delete-rule-form" method="POST">
+                            <input type="hidden" name="rule_id" value="{{ rule.id }}">
+                            <input type="hidden" name="action" value="delete">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <script>
+            const addForm = document.getElementById('add-rule-form');
+            const rulesTable = document.getElementById('rules-table');
+            const addSpinner = document.getElementById('add-spinner');
+            const addFeedback = document.getElementById('add-feedback');
+
+            // Add new rule with animation
+            addForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                addSpinner.style.display = 'block';
+                addFeedback.textContent = '';
+
+                const formData = new FormData(addForm);
+
+                try {
+                    const response = await fetch('/firewallbuilder', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    addSpinner.style.display = 'none';
+
+                    if (response.ok) {
+                        const newRule = await response.json(); // Assuming the server returns the added rule
+                        const newRow = document.createElement('tr');
+                        newRow.id = `rule-${newRule.id}`;
+                        newRow.innerHTML = `
+                            <td>${newRule.id}</td>
+                            <td>${newRule.direction}</td>
+                            <td>${newRule.protocol}</td>
+                            <td>${newRule.source_ip}</td>
+                            <td>${newRule.source_port}</td>
+                            <td>${newRule.destination_ip}</td>
+                            <td>${newRule.destination_port}</td>
+                            <td>
+                                <form class="delete-rule-form" method="POST">
+                                    <input type="hidden" name="rule_id" value="${newRule.id}">
+                                    <input type="hidden" name="action" value="delete">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
+                        `;
+                        newRow.classList.add('highlight');
+                        rulesTable.querySelector('tbody').appendChild(newRow);
+                        addForm.reset();
+                        addFeedback.textContent = 'Rule added successfully!';
+                        addFeedback.className = 'success';
+                    } else {
+                        addFeedback.textContent = 'Failed to add rule.';
+                        addFeedback.className = 'error';
+                    }
+                } catch (error) {
+                    addSpinner.style.display = 'none';
+                    addFeedback.textContent = 'Error adding rule.';
+                    addFeedback.className = 'error';
+                    console.error('Error:', error);
+                }
+            });
+
+            // Handle rule deletion
+            rulesTable.addEventListener('submit', async (e) => {
+                if (e.target.classList.contains('delete-rule-form')) {
+                    e.preventDefault();
+                    const formData = new FormData(e.target);
+                    const ruleRow = e.target.closest('tr');
+
+                    try {
+                        const response = await fetch('/firewallbuilder', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        if (response.ok) {
+                            ruleRow.classList.add('fade-out');
+                            setTimeout(() => {
+                                ruleRow.remove();
+                            }, 1000);
+                        } else {
+                            alert('Failed to delete rule.');
+                        }
+                    } catch (error) {
+                        alert('Error deleting rule.');
+                        console.error('Error:', error);
+                    }
+                }
+            });
+        </script>
+    </body>
+    </html>

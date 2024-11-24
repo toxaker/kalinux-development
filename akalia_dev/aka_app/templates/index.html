@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalinux | Security</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+<header>
+    <div class="header-content">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Kalinux Logo" class="logo">
+    <div class="header-content">
+    <h1>Kalinux | Security</h1>
+    </div>
+</header>
+<main>
+    <h1>WE DON'T WANT ANY BOTS HERE</h1>
+    <div class="container">
+        <div class="captcha-section">
+            <label class="checkbox-container">
+                <input type="checkbox" id="captcha-checkbox" onclick="toggleButton()">
+                <span class="checkmark"></span> I'm not a robot...
+            </label>
+            <button id="login-button" class="login-button" disabled onclick="redirectToHome()">Войти...</button>
+        </div>
+    </div>
+</main>
+<script>
+    function toggleButton() {
+        const checkbox = document.getElementById('captcha-checkbox');
+        const button = document.getElementById('login-button');
+        button.disabled = !checkbox.checked;
+    }
+    function redirectToHome() {
+        if (!document.getElementById('login-button').disabled) {
+            window.location.href = '/home';
+        }
+    }
+</script>
+<footer>
+    <div class="page-footer">
+            <p>© 2024 GNU General Public License v3.0. Авторство: <a href="https://t.me/toxakalinin">А.К.А</a> . Исходный код доступен на <a href="https://github.com/toxaker/">GitHub</a>
+               Там же можно ознакомиться с особенностями, затрагиваемыми данной лицензией</p>
+        </div>
+
+    <div class="page-footer">
+</footer>
+</body>
+</html>

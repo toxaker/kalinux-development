@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalinux | Help</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="animated-header">
+        <div class="header-content">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Логотип сайта" class="logo">
+            <h1>Security App - Поддержа & Помощь</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="content">
+            {% block content %}
+            <h2>Нужна помощь?</h2>
+            <p>Мы здесь, чтобы помочь вам. Если у вас возникли вопросы или проблемы, воспользуйтесь следующими ресурсами:</p>
+            <ul>
+                <li><a href="/faq">Часто задаваемые вопросы (FAQ)</a></li>
+                <li><a href="mailto:support@toxakalinux.ru">Связаться с поддержкой</a></li>
+                <li><a href="https://t.me/app_kalinux_world_bot/webkalinux">Посетить TELEGRAM</a></li>
+	        <li><a href="https://github.com/toxaker/">Посетить GITHUB</a></li>
+            </ul>
+            <p>Вы также можете связаться с нами через социальные сети или присоединиться к нашему Discord-каналу для получения поддержки в реальном времени.</p>
+            {% endblock %}
+        </div>
+	    <nav class="animated-menu">
+                <ul class="menu">
+                    <li><a href="https://security.kalinux.world/">Главная</a></li>
+                    <li><a href="/info">Информация</a></li>
+                    <li><a href="/toolsmenu">Инструменты</a></li>
+                    <li><a href="/tutorial">Гайды и референс</a></li>
+                    <li><a href="/developers">Разработка</a></li>
+                </ul>
+            </nav>
+    <script>
+        window.addEventListener('scroll', function() {
+            if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
+                document.body.classList.add('show-footer');
+            } else {
+                document.body.classList.remove('show-footer');
+            }
+        });
+    </script>
+<div class="page-footer">
+       	    <p>© 2024 security.kalinux.world. Продукт под MIT лицензией, авторство: <a href="https://t.me/toxakalinin">А.К.А</a> . Исходный код доступен на <a href="https://github.com/toxaker/">GitHub</a>
+</div>
+<div class="additional-content"></div>
+</main>
+<footer>
+        <div class="bottom-menu">
+            <a href="https://security.kalinux.world/" class="menu-item">
+                <img src="/static/appli.png" alt="App Icon">
+            </a>
+            <a href="https://home.kalinux.world/" class="menu-item">
+                <img src="/static/web.png" alt="Web Icon">
+            </a>
+            <a href="/faq" class="menu-item">
+                <img src="/static/faq.png" alt="About Icon">
+            </a>
+            <a href="/help" class="menu-item">
+                <img src="/static/help.png" alt="Help Icon">
+            </a>
+        </div>
+</footer>
+</body>
+</html>
